@@ -52,8 +52,9 @@ class Validator
     {
         if (!is_numeric($coordinate))
         {
-            echo "Координата должна быть вещественным числом в диапазоне [-10.0; 10.0] и с числом знаков после запятой < 7"
-                ."<br/> Обнаружено на строке ".($ind + 1)." исходного файла: " .$coordinate."<br/>";
+            echo "Координата должна быть вещественным числом в диапазоне [".self::LEFT_INTERVAL_BORDER."; ".self::RIGHT_INTERVAL_BORDER
+                ."] и с числом знаков после запятой < ".(self::DECIMAL_PLACES + 1)."<br/> Обнаружено на строке ".($ind + 1)
+                ." исходного файла: " .$coordinate."<br/>";
            return false;
         }
 
@@ -65,8 +66,8 @@ class Validator
     {
         if ($coordinate < self::LEFT_INTERVAL_BORDER || $coordinate > self::RIGHT_INTERVAL_BORDER)
         {
-            echo "Координата должна быть вещественным числом в диапазоне [-10.0; 10.0]<br/>Обнаружено на строке ".($ind + 1).
-                " исходного файла: ".$coordinate."<br/>";
+            echo "Координата должна быть вещественным числом в диапазоне [".self::LEFT_INTERVAL_BORDER."; ".self::RIGHT_INTERVAL_BORDER
+                ."]<br/>Обнаружено на строке ".($ind + 1)." исходного файла: ".$coordinate."<br/>";
             return false;
         }
 
@@ -81,8 +82,8 @@ class Validator
             $decimalPlacesAmount = strlen($coordinate) - strpos($coordinate, '.') - 1;
             if ($decimalPlacesAmount > self::DECIMAL_PLACES)
             {
-                echo "Координата должна быть вещественным числом с числом знаком после запятой < 7<br/>Обнаружено на строке ".($ind + 1)
-                    ." исходного файла: ".$coordinate."<br/>";
+                echo "Координата должна быть вещественным числом с числом знаком после запятой < ".(self::DECIMAL_PLACES + 1)
+                    ."<br/>Обнаружено на строке ".($ind + 1)." исходного файла: ".$coordinate."<br/>";
                 return false;
             }
         }
